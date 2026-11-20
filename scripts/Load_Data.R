@@ -35,4 +35,6 @@ read_hh <- function(index){
 for (i in 1:5) {
 read_hh(i)
 }
+
+
   
