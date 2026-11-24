@@ -1,0 +1,6 @@
+site_id,n_years,spearman_rho,p_value,status,p_holm
+CA-Gro,12,0.39304183206703214,0.2062557566199831,ok,0.5430449707933598
+US-Ro4,10,NA,NA,At least three paired years and variation in both variables are required,NA
+CZ-RAJ,12,-0.4139186771923578,0.18101499026445328,ok,0.5430449707933598
+FR-Aur,19,0.30275083275767567,0.20770822046358345,ok,0.5430449707933598
+JP-Spp,19,NA,NA,At least three paired years and variation in both variables are required,NA

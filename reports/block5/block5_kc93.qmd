@@ -1,0 +1,104 @@
+---
+title: "Block 5: Temperature anomaly and extreme events"
+author: "Konstantin Czak"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: true
+    embed-resources: true
+execute:
+  warning: false
+---
+
+Githublink
+
+# Question and Hypotheses
+
+A. Temperature anomalies: Does each tower's yearly mean temperature differ from the WorldClim 1970–2000 normal?
+
+B. Extreme events: Do temperature anomalies correspond to Dheed extreme events?
+
+## Hypothesis
+
+Towers with a higher temperature anomaly also tend to have more Dheed extreme days.
+
+# Data
+
+```{=html}
+<style>
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.table-scroll table {
+  min-width: 1500px;
+  table-layout: fixed;
+}
+
+.table-scroll th:nth-child(1),
+.table-scroll td:nth-child(1) { width: 130px; }
+.table-scroll th:nth-child(2),
+.table-scroll td:nth-child(2) { width: 230px; }
+.table-scroll th:nth-child(3),
+.table-scroll td:nth-child(3) { width: 135px; }
+.table-scroll th:nth-child(4),
+.table-scroll td:nth-child(4) { width: 210px; }
+.table-scroll th:nth-child(5),
+.table-scroll td:nth-child(5) { width: 130px; }
+.table-scroll th:nth-child(6),
+.table-scroll td:nth-child(6) { width: 160px; }
+.table-scroll th:nth-child(7),
+.table-scroll td:nth-child(7) {
+  width: 650px;
+  overflow-wrap: anywhere;
+}
+</style>
+```
+
+::: table-scroll
+| Dataset | Variables used | Spatial resolution | Temporal resolution | Downloaded on | Script | Citation |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| FLUXNET | TA_F | per tower | Half-hourly observations, summarized yearly | 20.11.2026 | [get_my_towers.R](../scripts/get_my_towers.R) | For each tower's data product see [CITATIONS.txt](../data/raw/CITATIONS.txt) and Pastorello et al. (2020), *Scientific Data*, 7, 225. [doi:10.1038/s41597-020-0534-3](https://doi.org/10.1038/s41597-020-0534-3). |
+| WorldClim 2.1 | Monthly `tavg` normals, averaged to annual BIO1-equivalent | 5 arc-minutes | 1970–2000 climatological normal | 20.11.2026 | [02_worldclim.R](../scripts/block5/02_worldclim.R) | Fick, S. E. & Hijmans, R. J. (2017). WorldClim 2: new 1-km spatial resolution climate surfaces for global land areas. *International Journal of Climatology*, 37, 4302–4315. [doi:10.1002/joc.5086](https://doi.org/10.1002/joc.5086). |
+| DHEED | Events reaching each tower; annual count by first day at tower | 0.25° | Daily events, 1950–2023 | 20.11.2026 | [03_dheed.R](../scripts/block5/03_dheed.R) | Weynants, M. et al. (2025). Dheed: an ERA5 based global database of compound dry and hot extreme events from 1950 to 2023. *Earth System Science Data*, 17, 6621. [doi:10.5194/essd-17-6621-2025](https://doi.org/10.5194/essd-17-6621-2025). Data: [doi:10.5281/zenodo.14884254](https://doi.org/10.5281/zenodo.14884254). |
+:::
+
+External datasets used for the analysis
+
+# Methods
+
+## Analysis script
+
+The analysis script can be found in [block5_mywork.R](/scripts/block5_mywork.R) 
+
+```{r}
+#| echo: false
+#| results: asis
+script_paths <- c(
+  file.path("scripts", "block5_mywork.R"),
+  file.path("..", "..", "scripts", "block5_mywork.R")
+)
+script_path <- script_paths[file.exists(script_paths)][1]
+if (is.na(script_path)) {
+  stop("Could not find scripts/block5_mywork.R from the report directory.")
+}
+script_code <- readLines(script_path, warn = FALSE)
+script_code <- gsub("&", "&amp;", script_code, fixed = TRUE)
+script_code <- gsub("<", "&lt;", script_code, fixed = TRUE)
+script_code <- gsub(">", "&gt;", script_code, fixed = TRUE)
+cat(
+  "<details><summary>Show analysis script</summary><pre><code class=\"language-r\">",
+  paste(script_code, collapse = "\n"),
+  "</code></pre></details>\n",
+  sep = ""
+)
+```
+
+# Results
+
+
+# Discussion
+
+# Data and Citations
