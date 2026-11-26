@@ -1,5 +1,5 @@
 ---
-title: "Block 5: Temperature anomaly and extreme events"
+title: "Block 5: Temperature Anomalies and Extreme Events"
 author: "Konstantin Czak"
 date: today
 format:
@@ -11,7 +11,7 @@ execute:
   warning: false
 ---
 
-Githublink
+GitHub: [kczak99/datascience_env_monit](https://github.com/kczak99/datascience_env_monit)
 
 # Question and Hypotheses
 
@@ -71,7 +71,7 @@ External datasets used for the analysis
 
 ## Analysis script
 
-The analysis script can be found in [block5_mywork.R](/scripts/block5_mywork.R) 
+The analysis script can be found in [block5_mywork.R](/scripts/block5_mywork.R)
 
 ```{r}
 #| echo: false
@@ -98,7 +98,44 @@ cat(
 
 # Results
 
+The towers showed substantial differences in their mean annual temperature anomalies relative to the 1970–2000 WorldClim normal (Figure 1). CA-Gro had the largest mean anomaly (+1.84°C), reaching +4.18°C in 2012, whereas CZ-RAJ had a mean anomaly of +1.50°C and FR-Aur +1.08°C. JP-Spp had a smaller positive mean anomaly (+0.38°C), although negative anomalies occurred in several early years. US-Ro4 was the only tower without a clearly positive mean anomaly (+0.62°C; 95% CI: −0.12 to +1.36°C).
+
+One-sample *t*-tests showed that the mean anomalies were significantly greater than zero at CA-Gro (*p* = 0.00016, Holm-adjusted *p* = 0.00047), CZ-RAJ (*p* = 0.0000099, Holm-adjusted *p* = 0.000039), FR-Aur (*p* = 0.00000065, Holm-adjusted *p* = 0.0000033), and JP-Spp (*p* = 0.00019, Holm-adjusted *p* = 0.00047). US-Ro4 did not differ significantly from zero (*p* = 0.091, Holm-adjusted *p* = 0.091).
+
+![Annual temperature anomalies at the five towers.](annual_temperature_anomalies/all_sites_annual_temperature_anomaly.png){#fig-anomalies fig-alt="Line chart of annual temperature anomalies by tower from 2000 to 2025"}
+
+Spearman correlations provided no consistent evidence that higher temperature anomalies were associated with more DHEED events (Figure 2). The correlations were positive and weak at CA-Gro (*ρ* = 0.393, *p* = 0.206) and FR-Aur (*ρ* = 0.303, *p* = 0.208), but negative and weak at CZ-RAJ (*ρ* = −0.414, *p* = 0.181). None was significant after Holm correction (all adjusted *p* = 0.543). A correlation could not be tested for JP-Spp or US-Ro4 because no extreme events occurred during the measurement periods.
+
+![Annual temperature anomalies compared with annual DHEED event counts.](annual_temperature_anomalies/temperature_anomaly_vs_dheed_events.png){#fig-dheed fig-alt="Scatter plots of temperature anomaly and DHEED event count, faceted by tower"}
 
 # Discussion
 
+CA-Gro, CZ-RAJ, FR-Aur, and JP-Spp had yearly mean temperatures significantly above their WorldClim 1970–2000 normals. This pattern is broadly consistent with recent global warming. US-Ro4 did not have a mean anomaly significantly different from zero. Its later values were generally positive, but the available record did not test for a temporal trend; a positive trend in the future can therefore only be considered a hypothesis, not a result.
+
+No DHEED correlation was statistically significant after Holm correction. CA-Gro and FR-Aur showed positive, weak correlations, whereas CZ-RAJ showed a negative, weak correlation. Thus, the positive correlation expected by the hypothesis was observed in two towers, but only without statistical support, and the opposite direction occurred at one tower. JP-Spp and US-Ro4 could not be tested because no DHEED event was recorded during their FLUXNET measurement periods. These small and inconsistent associations do not establish a relationship between annual temperature anomalies and DHEED events.
+
+With more time or data, this analysis should use longer, overlapping site records, count DHEED events within an area-weighted buffer around each tower, and test event thresholds or alternative extreme-event definitions. It would also benefit from a formal trend test and a sensitivity analysis comparing FLUXNET annual means with daily or monthly tower anomalies.
+
 # Data and Citations
+
+## FLUXNET tower data
+
+-   Kitamura, K., Mizoguchi, Y. (2026). *Fluxnet Archive Product from Sapporo Forest Meteorology Research Site, 2000–2018*. FLUXNET. <https://hdl.handle.net/11676/js_dXPMf2Ctz9mN3PGXCd2zb>
+-   Czerný, R., Kowalska, N., Pavelka, M., Šigut, L. (2026). *Fluxnet Archive Product from Rajec, 2012–2024*. FLUXNET. <https://hdl.handle.net/11676/LlmTy3u9548FEMXEW59RiWpY>
+-   McCaughey, Harry (2025). *AmeriFlux FLUXNET-1F CA-Gro Ontario - Groundhog River, Boreal Mixedwood Forest, Ver. v1.3_r1 (2003-2014)*. AmeriFlux AMP. <https://doi.org/10.17190/AMF/1902823>
+-   Baker, John, and Tim Griffis (2026). *AmeriFlux FLUXNET-1F US-Ro4 Rosemount Prairie, Ver. v1.3_r1 (2014-2025)*. AmeriFlux AMP. <https://doi.org/10.17190/AMF/1881589>
+-   Tallec, T., Ceschia, E., Granouillac, F., Claverie, N., Zawilski, B., Brut, A., Lemaire, B., Gibrin, H. (2026). *Fluxnet Archive Product from Aurade, 2005–2025*. FLUXNET. <https://hdl.handle.net/11676/e9BJpil-VqESMF4Y5NacyLVf>
+
+Pastorello, G., Trotta, C., Canfora, E., et al. (2020). The FLUXNET2015 dataset and the ONEFlux processing pipeline for eddy covariance data. *Scientific Data*, 7, 225. <https://doi.org/10.1038/s41597-020-0534-3>
+
+## WorldClim
+
+Fick, S. E., and R. J. Hijmans (2017). WorldClim 2: new 1-km spatial resolution climate surfaces for global land areas. *International Journal of Climatology*, 37, 4302–4315. <https://doi.org/10.1002/joc.5086>
+
+## DHEED
+
+Weynants, M., et al. (2025). Dheed: an ERA5 based global database of compound dry and hot extreme events from 1950 to 2023. *Earth System Science Data*, 17, 6621. <https://doi.org/10.5194/essd-17-6621-2025>. Data available at <https://doi.org/10.5281/zenodo.14884254>.
+
+## FLUXNET acknowledgement
+
+> FLUXNET data products were produced and harmonized by eddy covariance regional networks and data processing centers, including AmeriFlux, ChinaFlux, European Fluxes Database, ICOS, JapanFlux, KoFlux, OzFlux, SAEON, and TERN. These products also include a modified version of ERA5 hourly data provided by the Copernicus Climate Change Service.
